@@ -5,8 +5,8 @@ const INACTIVITY_MS = 5 * 60 * 1000;
 const webhookUrl = 'https://sswebhookss.affirmatechnology.com/webhook/be1293ae-db62-4ab3-8204-d2ae42505d63/chat';
 const target = document.querySelector('#n8n-chat');
 
-if (target && !target.dataset.dyproChatInitialized) {
-  target.dataset.dyproChatInitialized = 'true';
+if (target && !target.dataset.dycenterChatInitialized) {
+  target.dataset.dycenterChatInitialized = 'true';
 
   createChat({
     webhookUrl,
@@ -23,7 +23,7 @@ if (target && !target.dataset.dyproChatInitialized) {
     ],
     i18n: {
       es: {
-        title: 'DyPro',
+        title: 'DyCenter',
         subtitle: 'Asistente de servicio técnico',
         footer: '',
         getStarted: 'INICIAR CONVERSACIÓN',
