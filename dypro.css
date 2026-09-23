@@ -320,3 +320,24 @@ footer{background:#061421!important}
 @media(max-width:720px){
  .hero-vacuum-left{width:115px!important;left:2px!important;opacity:.08!important}
 }
+
+/* === Identidad DyCenter Pamplona: azul + violeta complementario === */
+:root{
+  --dp-magenta:#7C5CFC!important;
+  --accent-complement:#7C5CFC;
+  --accent-complement-dark:#5B3DE1;
+  --accent-complement-soft:#EEE9FF;
+}
+.hero .accent,.title-accent{color:var(--accent-complement)!important}
+.eyebrow .line,.why-eyebrow .line,.why-quote .underline{background:var(--accent-complement)!important}
+.hero-benefit-icon{background:var(--accent-complement-soft)!important;border-color:#D8CFFF!important;color:var(--accent-complement-dark)!important}
+.sol-icon{background:var(--accent-complement-soft)!important;color:var(--accent-complement-dark)!important}
+.faq-section .title-accent{color:var(--accent-complement)!important}
+.faq-list details[open] summary{color:var(--accent-complement-dark)!important}
+header .logo-word em,footer .footer-logo-word em{color:#A99BFF!important}
+header .nav-cta .btn-primary,header .main-nav .mobile-nav-cta{
+  background:linear-gradient(125deg,#7C5CFC,#238DD4)!important;
+}
+header .nav-cta .btn-primary:hover,header .main-nav .mobile-nav-cta:hover{
+  background:linear-gradient(125deg,#8E74FF,#1E88E5)!important;
+}
