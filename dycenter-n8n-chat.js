@@ -5,8 +5,28 @@ const INACTIVITY_MS = 5 * 60 * 1000;
 const webhookUrl = 'https://sswebhookss.affirmatechnology.com/webhook/be1293ae-db62-4ab3-8204-d2ae42505d63/chat';
 const target = document.querySelector('#n8n-chat');
 
+// El botón se crea como respaldo visible aunque el módulo remoto de n8n tarde o falle.
+const fallbackToggle = document.createElement('button');
+fallbackToggle.type = 'button';
+fallbackToggle.className = 'dycenter-chat-fallback';
+fallbackToggle.setAttribute('aria-label', 'Abrir chatbot DyCenter');
+fallbackToggle.innerHTML = '<span aria-hidden="true">💬</span><span>Chat</span>';
+document.body.appendChild(fallbackToggle);
+
+const hideFallbackWhenReady = () => {
+  const realToggle = target?.querySelector('.chat-window-toggle, [class*="chat-window-toggle"]');
+  if (realToggle) fallbackToggle.classList.add('is-hidden');
+};
+const readyObserver = new MutationObserver(hideFallbackWhenReady);
+if (target) readyObserver.observe(target, { childList: true, subtree: true });
+
 if (target && !target.dataset.dycenterChatInitialized) {
   target.dataset.dycenterChatInitialized = 'true';
+
+  fallbackToggle.addEventListener('click', () => {
+    const realToggle = target.querySelector('.chat-window-toggle, [class*="chat-window-toggle"]');
+    if (realToggle) realToggle.click();
+  });
 
   createChat({
     webhookUrl,
@@ -31,6 +51,9 @@ if (target && !target.dataset.dycenterChatInitialized) {
       }
     }
   });
+
+  setTimeout(hideFallbackWhenReady, 250);
+  setTimeout(hideFallbackWhenReady, 1000);
 
   let lastActivity = Date.now();
   let expired = false;
