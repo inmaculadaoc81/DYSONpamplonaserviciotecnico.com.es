@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
       from: `"DyCenter" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
       replyTo: email,
-      subject: 'Nueva consulta - DyCenter Servicio Técnico de Aspiradoras Dyson',
+      subject: 'Nueva consulta - DyCenter Servicio Técnico Dyson Pamplona',
       text: `Nombre: ${nombre}\nModelo: ${modelo || '-'}\nEmail: ${email}\nTeléfono: ${telefono}\n\n${mensaje}`
     });
     return res.status(200).json({ok:true});
